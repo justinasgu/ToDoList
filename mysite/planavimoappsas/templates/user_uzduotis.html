@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Mano užduotys</h1>
+    <p><strong>Užduoties tekstas:</strong> {{ uzduotis.uzduoties_tekstas }}</p>
+
+    {% if uzduotis_list %}
+    <ul>
+
+      {% for uzduotis in uzduotis_list %}
+      <li>
+        <a href="{% url 'uzduotis_detail' uzduotis.pk %}">{{ uzduotis.uzduoties_tekstas }}</a> ({{ uzduotis.data }})
+      </li>
+<tr>
+{% if object.vartotojas == user %}
+    <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'user_uzduotis_update' object.id %}">Redaguoti</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'user_uzduotis_delete' object.id %}">Ištrinti</a>
+            </div>
+            {% endif %}
+</tr>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>Šiuo metu neturite užduočių.</p>
+    {% endif %}
+
+
+{% endblock %}

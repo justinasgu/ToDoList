@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Uzduotis
+# Create your views here.
 
-# Create your views here.
 def index(request):
-    return HttpResponse("Labas, pasauli!")
-# Create your views here.
+    num_uzduotis = Uzduotis.objects.all().count()
+    context = {
+        'num_uzduotis': num_uzduotis,
+    }
+    return render(request, 'index.html', context=context)
+

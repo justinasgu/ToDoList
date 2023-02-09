@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import Uzduotis
 
-# Register your models here.
+
+class UzduotisAdmin(admin.ModelAdmin):
+    list_display = ('uzduoties_tekstas', 'vartotojas', 'data')
+    list_filter = ('vartotojas', 'data')
+
+
+admin.site.register(Uzduotis, UzduotisAdmin)
