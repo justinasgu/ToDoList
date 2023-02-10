@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Priskirtos užduotys atlikti:</h1>
+{% if uzduotis_list %}
+<ul>
+    {% for uzduotis in uzduotis_list %}
+    <li>
+        <a href="{{ uzduotis.id }}">{{ uzduotis.uzduotis }}</a> ({{uzduotis.sukurta}})
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Nėra priskirta jokių užduočių</p>
+{% endif %}
+{% endblock %}

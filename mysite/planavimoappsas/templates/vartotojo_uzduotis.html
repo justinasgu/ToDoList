@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Priskirtos užduotys</h1>
+<strong>Priskirtos užduoties tekstas:</strong>
+
+{% if uzduotis_list %}
+<ul>
+    {% for uzduotis in uzduotis_list %}
+    <li>
+        <a href="{% url 'uzduotis_detail' uzduotis.pk %}">{{ uzduotis.uzduotis }}</a> ({{ uzduotis.sukurta }})
+    </li>
+    <tr>
+        {% if object.vartotojas == user %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1"
+               href="{% url 'vartotojo_uzduotis_update' object.id %}">Redaguoti</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1"
+               href="{% url 'vartotojo_uzduotis_delete' object.id %}">Ištrinti</a>
+        </div>
+        {% endif %}
+    </tr>
+    {% endfor %}
+
+</ul>
+
+{% else %}
+<p>Nėra priskirtų užduočių šiuo metu.</p>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+

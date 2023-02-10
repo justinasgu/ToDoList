@@ -3,8 +3,8 @@ from .models import Uzduotis
 
 
 class UzduotisAdmin(admin.ModelAdmin):
-    list_display = ('uzduoties_tekstas', 'vartotojas', 'data')
-    list_filter = ('vartotojas', 'data')
+    list_display = ('uzduotis', 'vartotojas', 'sukurta')
+    list_filter = ('vartotojas', 'sukurta')
 
 
 admin.site.register(Uzduotis, UzduotisAdmin)

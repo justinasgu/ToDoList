@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ uzduotis.vartotojas }}</h1>
+
+  <p><strong>Užduoties tekstas:</strong> {{ uzduotis.uzduotis }}</p>
+  <p><strong>Vartotojas:</strong> {{ uzduotis.vartotojas }}</p>
+ {% if object.vartotojas == user %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'vartotojo_uzduotis_update' object.id %}">Redaguoti</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'vartotojo_uzduotis_delete' object.id %}">Ištrinti</a>
+            </div>
+            {% endif %}
+
+{% endblock %}
